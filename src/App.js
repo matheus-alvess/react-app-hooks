@@ -18,6 +18,11 @@ function App() {
     document.title = `Você tem ${filtered.length} favoritos.`;
   }, [repositories]); // ComponentDidUpdate // será executada quando o estado observado for atualizado.
 
+  // useEffect(() => {
+  //   const watchId = navigator.geolocation.watchPosition(handlePositionReceived);
+  //   return () => navigator.geolocation.clearWatch(watchId); //ComponentWillUnmount
+  // }, []); // ComponentWillunmount // será executada após o hook ser destruído
+
   function handleFavorite(id) {
     const newRepositories = repositories.map((repo) => {
       return repo.id === id ? { ...repo, favorite: !repo.favorite } : repo;
